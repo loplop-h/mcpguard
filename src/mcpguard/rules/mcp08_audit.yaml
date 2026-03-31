@@ -1,0 +1,34 @@
+- id: MCP08-001
+  info:
+    name: Server Uses Unsafe Shell Execution
+    severity: high
+    owasp: MCP08
+    description: MCP server runs via shell (bash -c, sh -c, cmd /c) which bypasses argument isolation and makes auditing harder
+    remediation: Run the server binary directly without a shell wrapper
+    cwe: CWE-78
+  detection:
+    target: config
+    scope: command
+    match:
+      type: regex
+      patterns:
+        - '^(bash|sh|cmd|powershell|pwsh)$'
+
+- id: MCP08-002
+  info:
+    name: Shell Pipe in Server Arguments
+    severity: high
+    owasp: MCP08
+    description: Server arguments contain shell pipes or redirections that could hide audit-evasion behavior
+    remediation: Remove shell operators from arguments and use direct binary execution
+    cwe: CWE-78
+  detection:
+    target: config
+    scope: args
+    match:
+      type: regex
+      patterns:
+        - '\|\s*\w+'
+        - '>\s*/'
+        - '2>/dev/null'
+        - '&>/dev/null'

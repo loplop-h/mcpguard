@@ -1,0 +1,14 @@
+- id: MCP02-001
+  info:
+    name: Wildcard Tool Auto-Approval
+    severity: critical
+    owasp: MCP02
+    description: All tools are auto-approved with wildcard. Agents can execute any tool without user confirmation.
+    remediation: Remove alwaysAllow wildcard or list specific trusted tools explicitly
+    cwe: CWE-269
+  detection:
+    target: config
+    scope: always_allow
+    match:
+      type: check
+      check: always_allow_wildcard

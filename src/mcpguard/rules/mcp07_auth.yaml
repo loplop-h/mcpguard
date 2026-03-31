@@ -1,0 +1,29 @@
+- id: MCP07-001
+  info:
+    name: HTTP Server Without Authentication
+    severity: critical
+    owasp: MCP07
+    description: Remote MCP server connected over HTTP/SSE without any Authorization header
+    remediation: Add authentication headers or use a server that requires auth
+    cwe: CWE-306
+  detection:
+    target: config
+    scope: all
+    match:
+      type: check
+      check: http_no_auth
+
+- id: MCP07-002
+  info:
+    name: Plaintext HTTP Transport
+    severity: high
+    owasp: MCP07
+    description: MCP server uses plaintext HTTP instead of HTTPS. Credentials and data are transmitted unencrypted.
+    remediation: Use HTTPS for all remote MCP server connections
+    cwe: CWE-319
+  detection:
+    target: config
+    scope: all
+    match:
+      type: check
+      check: http_not_https

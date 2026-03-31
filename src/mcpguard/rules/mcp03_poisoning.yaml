@@ -1,0 +1,16 @@
+# MCP03 rules that work on config-level (tool descriptions scanned via inspector)
+- id: MCP03-007
+  info:
+    name: Config Contains Inline Tool Definitions
+    severity: medium
+    owasp: MCP03
+    description: MCP config contains inline tool definitions which cannot be verified against the server
+    remediation: Let the server declare its own tools dynamically rather than overriding in config
+    cwe: CWE-494
+  detection:
+    target: config
+    scope: all
+    match:
+      type: regex
+      patterns:
+        - '"tools"\s*:\s*\['

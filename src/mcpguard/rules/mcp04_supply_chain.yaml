@@ -1,0 +1,14 @@
+- id: MCP04-001
+  info:
+    name: Unpinned Package Version (@latest)
+    severity: high
+    owasp: MCP04
+    description: MCP server uses @latest or unpinned version. A supply chain attack could inject malicious code via a new version.
+    remediation: Pin to a specific version (e.g., @1.2.3) and verify package integrity
+    cwe: CWE-1104
+  detection:
+    target: config
+    scope: all
+    match:
+      type: check
+      check: unpinned_version

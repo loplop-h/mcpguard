@@ -1,0 +1,65 @@
+name: 'mcpguard'
+description: 'Scan MCP server configurations for security vulnerabilities. Maps findings to OWASP MCP Top 10.'
+author: 'loplop-h'
+
+branding:
+  icon: 'shield'
+  color: 'red'
+
+inputs:
+  path:
+    description: 'Path to MCP config file or directory to scan'
+    required: false
+    default: '.'
+  severity:
+    description: 'Minimum severity to report (critical, high, medium, low, info)'
+    required: false
+    default: 'low'
+  format:
+    description: 'Output format (table, json, sarif)'
+    required: false
+    default: 'sarif'
+  version:
+    description: 'Version of mcpguard to install'
+    required: false
+    default: ''
+  upload-sarif:
+    description: 'Upload SARIF results to GitHub Security tab'
+    required: false
+    default: 'true'
+
+runs:
+  using: composite
+  steps:
+    - name: Install mcpguard
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.version }}" ]; then
+          pip install mcpguard==${{ inputs.version }}
+        else
+          pip install mcpguard
+        fi
+
+    - name: Run scan
+      shell: bash
+      run: |
+        if [ "${{ inputs.format }}" = "sarif" ]; then
+          mcpguard scan \
+            --path "${{ inputs.path }}" \
+            --severity "${{ inputs.severity }}" \
+            --format sarif \
+            -o mcpguard-results.sarif \
+            --no-exit-code || true
+        else
+          mcpguard scan \
+            --path "${{ inputs.path }}" \
+            --severity "${{ inputs.severity }}" \
+            --format "${{ inputs.format }}"
+        fi
+
+    - name: Upload SARIF
+      if: inputs.upload-sarif == 'true' && inputs.format == 'sarif'
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: mcpguard-results.sarif
+        category: mcpguard

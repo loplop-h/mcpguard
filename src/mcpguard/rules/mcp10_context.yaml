@@ -1,0 +1,51 @@
+- id: MCP10-001
+  info:
+    name: No Rate Limiting on Server
+    severity: low
+    owasp: MCP10
+    description: HTTP MCP server has no rate limiting configured. Unrestricted access may lead to context flooding or cost escalation.
+    remediation: Configure rate limiting on the server or use a reverse proxy with rate limits
+    cwe: CWE-770
+  detection:
+    target: config
+    scope: all
+    match:
+      type: check
+      check: http_no_auth
+
+- id: MCP10-002
+  info:
+    name: Docker Container With Host Network
+    severity: high
+    owasp: MCP10
+    description: MCP server runs in Docker with host network access, allowing unrestricted access to local services and context leakage
+    remediation: Remove --network=host and use explicit port mappings
+    cwe: CWE-668
+  detection:
+    target: config
+    scope: args
+    match:
+      type: regex
+      patterns:
+        - '--network[=\s]+host'
+        - '--net[=\s]+host'
+
+- id: MCP10-003
+  info:
+    name: Docker Container With Volume Mount to Sensitive Path
+    severity: high
+    owasp: MCP10
+    description: MCP server Docker container mounts sensitive host paths (home dir, root, etc.)
+    remediation: Mount only the specific directories the server needs
+    cwe: CWE-668
+  detection:
+    target: config
+    scope: args
+    match:
+      type: regex
+      patterns:
+        - '-v\s+/:/\w'
+        - '-v\s+/root\b'
+        - '-v\s+/home\b'
+        - '-v\s+~\b'
+        - '--mount.*source=/,target'

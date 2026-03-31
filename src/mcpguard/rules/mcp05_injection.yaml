@@ -1,0 +1,33 @@
+- id: MCP05-001
+  info:
+    name: Shell Metacharacters in Arguments
+    severity: high
+    owasp: MCP05
+    description: MCP server arguments contain shell metacharacters that could enable command injection
+    remediation: Sanitize arguments and avoid passing untrusted input to shell commands
+    cwe: CWE-78
+  detection:
+    target: config
+    scope: args
+    match:
+      type: regex
+      patterns:
+        - ';\s*(rm|curl|wget|nc|bash|sh|python|node|eval)\b'
+        - '\|\s*(bash|sh|python|node)\b'
+        - '\$\([^)]*\)'
+        - '`[^`]+`'
+
+- id: MCP05-002
+  info:
+    name: Dangerous Command Execution
+    severity: high
+    owasp: MCP05
+    description: MCP server runs a potentially dangerous system command
+    remediation: Review if this command is necessary and restrict its scope
+    cwe: CWE-78
+  detection:
+    target: config
+    scope: all
+    match:
+      type: check
+      check: dangerous_command

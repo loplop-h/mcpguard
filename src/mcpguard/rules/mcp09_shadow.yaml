@@ -1,0 +1,14 @@
+- id: MCP09-001
+  info:
+    name: Localhost/Development MCP Server
+    severity: medium
+    owasp: MCP09
+    description: MCP server points to localhost or development URL. This may be a shadow server outside governance.
+    remediation: Replace with a production URL or remove if this is a test server
+    cwe: CWE-1188
+  detection:
+    target: config
+    scope: all
+    match:
+      type: check
+      check: localhost_url

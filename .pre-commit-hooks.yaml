@@ -1,0 +1,8 @@
+- id: mcpguard
+  name: mcpguard
+  description: Scan MCP server configurations for security vulnerabilities
+  entry: mcpguard scan --exit-code --no-owasp
+  language: python
+  types: [json]
+  files: '(mcp\.json|claude.*config\.json|\.claude\.json)$'
+  additional_dependencies: ['mcpguard']
