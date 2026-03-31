@@ -1,4 +1,10 @@
-<h1 align="center">mcpguard</h1>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/loplop-h/mcpguard/master/docs/logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/loplop-h/mcpguard/master/docs/logo-light.svg">
+    <img alt="mcpguard" src="https://raw.githubusercontent.com/loplop-h/mcpguard/master/docs/logo-light.svg" width="450">
+  </picture>
+</p>
 
 <p align="center"><strong>Find security vulnerabilities in your MCP server configs before attackers do.</strong></p>
 <p align="center">Maps every finding to the OWASP MCP Top 10. Zero config. Runs locally.</p>
