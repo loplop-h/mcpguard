@@ -14,7 +14,7 @@
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/loplop-h/mcpguard/master/docs/scan-screenshot.png" alt="mcpguard scan output" width="650">
+  <img src="https://raw.githubusercontent.com/loplop-h/mcpguard/master/docs/scan-screenshot.png?v=2" alt="mcpguard scan output" width="650">
 </p>
 
 ## Quick Start
