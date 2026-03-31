@@ -26,9 +26,17 @@ SEVERITY_STYLES: dict[Severity, tuple[str, str, str]] = {
 }
 
 def print_header(console: Console, version: str) -> None:
+    from rich.text import Text as RichText
+
+    t = RichText()
+    t.append("\n")
+    t.append("  mcpguard  \n\n", style="bold red reverse")
+    t.append(f"  v{version}", style="dim")
+    t.append("  MCP Security Scanner\n", style="bold")
+    t.append("  github.com/loplop-h/mcpguard", style="dim cyan")
+
     console.print()
-    console.print("[bold red]  mcpguard[/bold red]  [dim]v{v} -- MCP Security Scanner[/dim]".format(v=version))
-    console.print("[dim]  https://github.com/loplop-h/mcpguard[/dim]")
+    console.print(Panel(t, border_style="red", padding=(1, 2)))
     console.print()
 
 

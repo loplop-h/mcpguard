@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=block" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0d1117;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: "Fira Code", monospace;
+}
+.terminal {
+    background: #1a1b26;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    width: 720px;
+    overflow: hidden;
+}
+.titlebar {
+    background: #24283b;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.titlebar span {
+    flex: 1;
+    text-align: center;
+    color: #565f89;
+    font-size: 12px;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    margin-right: 46px;
+}
+.body { padding: 20px 24px; color: #a9b1d6; font-size: 13px; line-height: 1.5; }
+
+/* Header panel */
+.header-panel {
+    border: 1px solid #f7768e;
+    border-radius: 4px;
+    padding: 20px 24px 16px;
+    margin-bottom: 16px;
+}
+.banner {
+    font-size: 42px;
+    font-weight: 700;
+    color: #f7768e;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+}
+.subtitle { color: #565f89; font-size: 13px; }
+.subtitle b { color: #a9b1d6; font-weight: 700; }
+.subtitle a { color: #7aa2f7; text-decoration: none; }
+
+/* Findings rule */
+.rule {
+    text-align: center;
+    color: #565f89;
+    margin: 16px 0 12px;
+    font-size: 13px;
+}
+.rule span { color: #a9b1d6; font-weight: 700; }
+
+/* Finding panels */
+.finding {
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+.finding.crit { border-color: #f7768e; }
+.finding.high { border-color: #f7768e; }
+.finding.med  { border-color: #e0af68; }
+.finding.low  { border-color: #7aa2f7; }
+
+.finding .row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 2px; }
+.badge {
+    display: inline-block;
+    padding: 1px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid;
+}
+.badge.crit { color: #fff; background: #f7768e; border-color: #f7768e; }
+.badge.high { color: #fff; background: #f7768e; border-color: #f7768e; }
+.badge.med  { color: #1a1b26; background: #e0af68; border-color: #e0af68; }
+.badge.low  { color: #fff; background: #7aa2f7; border-color: #7aa2f7; }
+
+.finding .name { font-weight: 700; color: #a9b1d6; }
+.finding .meta { color: #565f89; font-size: 12px; }
+.finding .meta .owasp { color: #7aa2f7; }
+.finding .field { font-size: 12px; }
+.finding .field b { color: #a9b1d6; }
+.finding .field .val { color: #565f89; }
+.finding .field .ev { color: #e0af68; }
+.finding .field .fix { color: #9ece6a; }
+
+/* Summary */
+.summary-panel {
+    border: 1px solid #f7768e;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 16px;
+}
+.summary-title {
+    text-align: center;
+    margin: -24px 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+.summary-title span {
+    background: #1a1b26;
+    padding: 0 12px;
+}
+.summary-row { display: flex; font-size: 13px; margin-bottom: 2px; }
+.summary-row .label { width: 180px; }
+.summary-row .fail { color: #f7768e; font-weight: 700; }
+.summary-row .counts .c { color: #f7768e; font-weight: 700; }
+.summary-row .counts .h { color: #f7768e; }
+.summary-row .counts .m { color: #e0af68; }
+.summary-row .counts .l { color: #7aa2f7; }
+</style>
+</head>
+<body>
+<div class="terminal">
+    <div class="titlebar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <span>mcpguard scan</span>
+    </div>
+    <div class="body">
+        <div class="header-panel">
+            <div class="banner">mcpguard</div>
+            <div class="subtitle">
+                <span style="color:#565f89">v0.1.0</span>&nbsp;&nbsp;
+                <b>MCP Security Scanner</b><br>
+                <a>github.com/loplop-h/mcpguard</a>
+            </div>
+        </div>
+
+        <div class="rule">&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; <span>Findings</span> &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;</div>
+
+        <div class="finding crit">
+            <div class="row"><span class="badge crit">CRITICAL</span> <span class="name">Hardcoded API Key (OpenAI)</span></div>
+            <div class="meta"><span class="owasp">OWASP MCP01</span>&nbsp;&nbsp;Rule MCP01-001&nbsp;&nbsp;CWE-798</div>
+            <div class="field"><b>Server:</b> code-assistant&nbsp;&nbsp;<span class="val">~/.cursor/mcp.json</span></div>
+            <div class="field"><b>Evidence:</b> <span class="ev">sk-proj-abc...def</span></div>
+            <div class="field"><b>Fix:</b> <span class="fix">Use ${OPENAI_API_KEY} environment variable</span></div>
+        </div>
+
+        <div class="finding crit">
+            <div class="row"><span class="badge crit">CRITICAL</span> <span class="name">Hardcoded API Key (GitHub PAT)</span></div>
+            <div class="meta"><span class="owasp">OWASP MCP01</span>&nbsp;&nbsp;Rule MCP01-005&nbsp;&nbsp;CWE-798</div>
+            <div class="field"><b>Server:</b> github-mcp&nbsp;&nbsp;<span class="val">~/.claude.json</span></div>
+            <div class="field"><b>Evidence:</b> <span class="ev">ghp_xxxx...xxxx</span></div>
+            <div class="field"><b>Fix:</b> <span class="fix">Use ${GITHUB_TOKEN} environment variable</span></div>
+        </div>
+
+        <div class="finding high">
+            <div class="row"><span class="badge high">HIGH</span>&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Wildcard Tool Permissions</span></div>
+            <div class="meta"><span class="owasp">OWASP MCP02</span>&nbsp;&nbsp;Rule MCP02-001&nbsp;&nbsp;CWE-269</div>
+            <div class="field"><b>Server:</b> filesystem&nbsp;&nbsp;<span class="val">~/.claude.json</span></div>
+            <div class="field"><b>Evidence:</b> <span class="ev">alwaysAllow: ["*"]</span></div>
+            <div class="field"><b>Fix:</b> <span class="fix">Specify allowed tools explicitly</span></div>
+        </div>
+
+        <div class="finding med">
+            <div class="row"><span class="badge med">MEDIUM</span>&nbsp;&nbsp; <span class="name">Plaintext HTTP Transport</span></div>
+            <div class="meta"><span class="owasp">OWASP MCP07</span>&nbsp;&nbsp;Rule MCP07-002&nbsp;&nbsp;CWE-319</div>
+            <div class="field"><b>Server:</b> api-bridge&nbsp;&nbsp;<span class="val">~/.cursor/mcp.json</span></div>
+            <div class="field"><b>Evidence:</b> <span class="ev">http://api.example.com:8080</span></div>
+            <div class="field"><b>Fix:</b> <span class="fix">Use https:// instead of http://</span></div>
+        </div>
+
+        <div class="finding low">
+            <div class="row"><span class="badge low">LOW</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Unpinned Package Version</span></div>
+            <div class="meta"><span class="owasp">OWASP MCP04</span>&nbsp;&nbsp;Rule MCP04-001&nbsp;&nbsp;CWE-1104</div>
+            <div class="field"><b>Server:</b> web-tools&nbsp;&nbsp;<span class="val">~/.config/Code/User/mcp.json</span></div>
+            <div class="field"><b>Evidence:</b> <span class="ev">@anthropic/mcp-server@latest</span></div>
+            <div class="field"><b>Fix:</b> <span class="fix">Pin to a specific version</span></div>
+        </div>
+
+        <div class="summary-panel">
+            <div class="summary-title"><span>Scan Summary</span></div>
+            <div class="summary-row"><span class="label">Status:</span> <span class="fail">FAIL</span></div>
+            <div class="summary-row"><span class="label">Configs scanned:</span> 3</div>
+            <div class="summary-row"><span class="label">Servers scanned:</span> 8</div>
+            <div class="summary-row"><span class="label">Findings:</span> <span class="counts">5 (<span class="c">2 critical</span>, <span class="h">1 high</span>, <span class="m">1 medium</span>, <span class="l">1 low</span>)</span></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
