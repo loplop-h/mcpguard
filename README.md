@@ -10,8 +10,8 @@
 <p align="center">Maps every finding to the OWASP MCP Top 10. Zero config. Runs locally.</p>
 
 <p align="center">
-  <a href="https://pypi.org/project/mcpguard/"><img src="https://img.shields.io/pypi/v/mcpguard?style=flat-square" alt="PyPI"></a>
-  <a href="https://pypi.org/project/mcpguard/"><img src="https://img.shields.io/pypi/pyversions/mcpguard?style=flat-square" alt="Python"></a>
+  <a href="https://pypi.org/project/guardmcp/"><img src="https://img.shields.io/pypi/v/guardmcp?style=flat-square" alt="PyPI"></a>
+  <a href="https://pypi.org/project/guardmcp/"><img src="https://img.shields.io/pypi/pyversions/guardmcp?style=flat-square" alt="Python"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License"></a>
   <a href="https://github.com/loplop-h/mcpguard/stargazers"><img src="https://img.shields.io/github/stars/loplop-h/mcpguard?style=flat-square" alt="Stars"></a>
   <a href="https://owasp.org/www-project-mcp-top-10/"><img src="https://img.shields.io/badge/OWASP-MCP%20Top%2010-orange?style=flat-square" alt="OWASP"></a>
@@ -26,7 +26,7 @@
 ## Quick Start
 
 ```bash
-pip install mcpguard
+pip install guardmcp
 mcpguard scan
 ```
 
@@ -166,7 +166,7 @@ jobs:
 Or manually:
 
 ```yaml
-      - run: pip install mcpguard
+      - run: pip install guardmcp
       - run: mcpguard scan --format sarif -o results.sarif
       - uses: github/codeql-action/upload-sarif@v3
         with:
