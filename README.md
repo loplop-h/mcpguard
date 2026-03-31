@@ -1,13 +1,4 @@
-<p align="center">
-<pre>
-                                                  _
-  _ __ ___   ___ _ __   __ _ _   _  __ _ _ __ __| |
- | '_ ` _ \ / __| '_ \ / _` | | | |/ _` | '__/ _` |
- | | | | | | (__| |_) | (_| | |_| | (_| | | | (_| |
- |_| |_| |_|\___| .__/ \__, |\__,_|\__,_|_|  \__,_|
-                 |_|    |___/
-</pre>
-</p>
+<h1 align="center">mcpguard</h1>
 
 <p align="center"><strong>Find security vulnerabilities in your MCP server configs before attackers do.</strong></p>
 <p align="center">Maps every finding to the OWASP MCP Top 10. Zero config. Runs locally.</p>

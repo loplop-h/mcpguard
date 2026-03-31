@@ -25,19 +25,11 @@ SEVERITY_STYLES: dict[Severity, tuple[str, str, str]] = {
     Severity.INFO:     ("bold white on cyan",  "dim",     "INFO    "),
 }
 
-LOGO = r"""
-                                                  _
-  _ __ ___   ___ _ __   __ _ _   _  __ _ _ __ __| |
- | '_ ` _ \ / __| '_ \ / _` | | | |/ _` | '__/ _` |
- | | | | | | (__| |_) | (_| | |_| | (_| | | | (_| |
- |_| |_| |_|\___| .__/ \__, |\__,_|\__,_|_|  \__,_|
-                 |_|    |___/
-"""
-
-
 def print_header(console: Console, version: str) -> None:
-    console.print(f"[bold blue]{LOGO}[/bold blue]", highlight=False)
-    console.print(f"  [dim]v{version} -- MCP Security Scanner[/dim]\n")
+    console.print()
+    console.print("[bold red]  mcpguard[/bold red]  [dim]v{v} -- MCP Security Scanner[/dim]".format(v=version))
+    console.print("[dim]  https://github.com/loplop-h/mcpguard[/dim]")
+    console.print()
 
 
 def print_discovery(console: Console, configs: list[tuple[str, Any, Any]]) -> None:
